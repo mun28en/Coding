@@ -93,17 +93,6 @@ GROUP BY company_name
 HAVING employees/revenue >= (SELECT avg(employees/revenue) FROM fortune_companies)
 ORDER BY revenue_by_employee desc
 
-SELECT company_name, industry, healthcare_benefits, employees/revenue AS revenue_by_employee,
-CASE WHEN healthcare_benefits = 1
-AND maternity_leave_weeks >= (SELECT avg(maternity_leave_weeks) FROM fortune_companies)
-AND paid_time_off_days >= (SELECT avg(paid_time_off_days) FROM fortune_companies)
-AND employees/revenue >= (SELECT avg(employees/revenue) FROM fortune_companies)
-THEN 'Approved'
-ELSE 'Not Approved'
-END AS better_than_average
-FROM fortune_companies
-ORDER BY revenue_by_employee desc
-LIMIT 10;
 
 -- By the conditions I put, the output of the query was that 3 out of 6 companies have more than the average revenue by employee ratio and have been "approved", meaning that they give: healtcare, more than the average of paid time off days and more than the average maternity leave weeks.
 
