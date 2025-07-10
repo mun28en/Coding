@@ -51,4 +51,5 @@ ORDER BY price desc;
 
 SELECT category , count(category)
 FROM superstore
-GROUP BY category desc;
+GROUP BY category
+ORDER BY category desc;
